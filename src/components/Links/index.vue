@@ -46,7 +46,7 @@ let linksData = [
   {
     icon: Blog,
     name: "导航",
-    link: "http://cyzero.xyz:81",
+    link: "https://n.cyzero.xyz",
   },
   {
     icon: Cloud,
