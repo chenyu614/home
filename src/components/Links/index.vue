@@ -45,13 +45,13 @@ import {
 let linksData = [
   {
     icon: Blog,
-    name: "博客",
-    link: "https://blog.imsyy.top/",
+    name: "导航",
+    link: "http://cyzero.xyz:81",
   },
   {
     icon: Cloud,
     name: "网盘",
-    link: "https://pan.imsyy.top/",
+    link: "http://cyzero.xyz:61",
   },
   {
     icon: CompactDisc,
