@@ -46,12 +46,12 @@ let linksData = [
   {
     icon: Blog,
     name: "导航",
-    link: "https://n.cyzero.xyz",
+    link: "https://n.cyzero.top",
   },
   {
     icon: Cloud,
     name: "网盘",
-    link: "http://cyzero.xyz:61",
+    link: "http://cyzero.top:61",
   },
   {
     icon: CompactDisc,
