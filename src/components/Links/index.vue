@@ -46,32 +46,32 @@ let linksData = [
   {
     icon: Blog,
     name: "导航",
-    link: "https://n.cyzero.top",
+    link: "https://n.cyzero.top/",
   },
   {
     icon: Cloud,
-    name: "网盘",
-    link: "http://cyzero.top:61",
+    name: "盘搜",
+    link: "https://pan.cyzero.top:10/",
   },
   {
     icon: CompactDisc,
     name: "音乐",
-    link: "https://music.imsyy.top/",
+    link: "https://m.cyzero.top:10/",
   },
   {
     icon: Compass,
     name: "起始页",
-    link: "https://nav.imsyy.top/",
+    link: "https://home.cyzero.top:10/",
   },
   {
     icon: Book,
     name: "网址集",
-    link: "https://web.imsyy.top/",
+    link: "https://371325.xyz/",
   },
   {
     icon: Fire,
-    name: "今日热榜",
-    link: "https://hot.imsyy.top/",
+    name: "DK镜像站",
+    link: "https://status.daocloud.io/status/docker",
   },
 ];
 
