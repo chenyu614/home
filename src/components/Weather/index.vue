@@ -18,9 +18,13 @@
 import { onMounted, reactive, h } from "vue";
 import { getAdcode, getWeather } from "@/api";
 import { Error } from "@icon-park/vue-next";
+import { ElMessage } from "element-plus";
 
 // 高德开发者 Key
 let mainKey = import.meta.env.VITE_WEATHER_KEY;
+
+// 默认兜底城市 adcode（临沂），IP 定位失败时使用
+const DEFAULT_ADCODE = "371300";
 
 // 天气数据
 let weatherData = reactive({
@@ -38,39 +42,38 @@ let weatherData = reactive({
 
 // 获取天气数据
 const getWeatherData = () => {
-  // 获取地理位置信息
   if (!mainKey) return onError("请配置天气 Key");
+
   getAdcode(mainKey)
     .then((res) => {
-      if (res.status) {
-        weatherData.adCode = {
-          city: res.city,
-          adcode: res.adcode,
-        };
-        // 获取天气信息
-        getWeather(mainKey, weatherData.adCode.adcode)
-          .then((res) => {
-            if (res.status) {
-              weatherData.weather = {
-                weather: res.lives[0].weather,
-                temperature: res.lives[0].temperature,
-                winddirection: res.lives[0].winddirection,
-                windpower: res.lives[0].windpower,
-              };
-            } else {
-              onError("天气信息获取失败");
-            }
-          })
-          .catch(() => {
+      // 优先用 IP 定位返回的 adcode，失败则用默认城市兜底
+      const adcode = res.status && res.adcode ? res.adcode : DEFAULT_ADCODE;
+
+      getWeather(mainKey, adcode)
+        .then((weatherRes) => {
+          if (
+            weatherRes.status &&
+            weatherRes.lives &&
+            weatherRes.lives[0]
+          ) {
+            const live = weatherRes.lives[0];
+            weatherData.adCode = {
+              city: live.city,
+              adcode: adcode,
+            };
+            weatherData.weather = {
+              weather: live.weather,
+              temperature: live.temperature,
+              winddirection: live.winddirection,
+              windpower: live.windpower,
+            };
+          } else {
             onError("天气信息获取失败");
-          });
-      } else {
-        onError("地理位置获取失败");
-      }
+          }
+        })
+        .catch(() => onError("天气信息获取失败"));
     })
-    .catch(() => {
-      onError("地理位置获取失败");
-    });
+    .catch(() => onError("地理位置获取失败"));
 };
 
 // 报错信息
