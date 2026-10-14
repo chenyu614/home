@@ -46,13 +46,16 @@ const getWeatherData = () => {
 
   getAdcode(mainKey)
     .then((res) => {
-      // 优先用 IP 定位返回的 adcode，失败则用默认城市兜底
-      const adcode = res.status && res.adcode ? res.adcode : DEFAULT_ADCODE;
+      // IPv4 且定位成功时用返回的 adcode，否则用默认城市兜底
+      const adcode =
+        res.status === "1" && res.adcode && res.adcode !== ""
+          ? res.adcode
+          : DEFAULT_ADCODE;
 
       getWeather(mainKey, adcode)
         .then((weatherRes) => {
           if (
-            weatherRes.status &&
+            weatherRes.status === "1" &&
             weatherRes.lives &&
             weatherRes.lives[0]
           ) {
