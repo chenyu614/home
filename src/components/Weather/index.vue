@@ -48,7 +48,7 @@ const getWeatherData = () => {
     .then((res) => {
       // IPv4 且定位成功时用返回的 adcode，否则用默认城市兜底
       const adcode =
-        res.status === "1" && res.adcode && res.adcode !== ""
+        res.status === "1" && typeof res.adcode === "string" && res.adcode !== ""
           ? res.adcode
           : DEFAULT_ADCODE;
 
