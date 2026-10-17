@@ -2,10 +2,11 @@
   <footer>
     <div class="power" v-show="!store.playerState">
       <span
-        >ENDLessProgress&nbsp;&copy;&nbsp;{{ fullYear }}
+        >保持热爱 奔赴山海&nbsp;&copy;&nbsp;{{ fullYear }}
         <a href="https://x.cyzero.top">沉鱼</a>
       </span>
       <!-- 以下信息请不要修改哦 -->
+      <!--
       <span class="hidden"
         >&nbsp;&amp;&nbsp;Made&nbsp;by&nbsp;<a
           :href="config.github"
@@ -14,6 +15,7 @@
           {{ config.author }}
         </a></span
       >&nbsp;&amp;
+      -->
       <!-- 站点备案 -->
       <!--a href="https://beian.miit.gov.cn" target="_blank"
         >豫ICP备2022018134号-1</a
